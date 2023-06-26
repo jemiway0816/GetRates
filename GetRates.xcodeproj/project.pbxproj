@@ -13,6 +13,8 @@
 		82B3F26E2A49B92B009F0CC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B3F26C2A49B92B009F0CC9 /* Main.storyboard */; };
 		82B3F2702A49B92C009F0CC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B3F26F2A49B92C009F0CC9 /* Assets.xcassets */; };
 		82B3F2732A49B92C009F0CC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B3F2712A49B92C009F0CC9 /* LaunchScreen.storyboard */; };
+		82B3F27C2A49BA52009F0CC9 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 82B3F27B2A49BA52009F0CC9 /* Kanna */; };
+		82B3F27F2A49C250009F0CC9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 82B3F27E2A49C250009F0CC9 /* SwiftyJSON */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82B3F27F2A49C250009F0CC9 /* SwiftyJSON in Frameworks */,
+				82B3F27C2A49BA52009F0CC9 /* Kanna in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +87,10 @@
 			dependencies = (
 			);
 			name = GetRates;
+			packageProductDependencies = (
+				82B3F27B2A49BA52009F0CC9 /* Kanna */,
+				82B3F27E2A49C250009F0CC9 /* SwiftyJSON */,
+			);
 			productName = GetRates;
 			productReference = 82B3F2632A49B92B009F0CC9 /* GetRates.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,10 @@
 				Base,
 			);
 			mainGroup = 82B3F25A2A49B92B009F0CC9;
+			packageReferences = (
+				82B3F27A2A49BA52009F0CC9 /* XCRemoteSwiftPackageReference "Kanna" */,
+				82B3F27D2A49C250009F0CC9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+			);
 			productRefGroup = 82B3F2642A49B92B009F0CC9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -358,6 +370,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		82B3F27A2A49BA52009F0CC9 /* XCRemoteSwiftPackageReference "Kanna" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/tid-kijyun/Kanna.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		82B3F27D2A49C250009F0CC9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		82B3F27B2A49BA52009F0CC9 /* Kanna */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82B3F27A2A49BA52009F0CC9 /* XCRemoteSwiftPackageReference "Kanna" */;
+			productName = Kanna;
+		};
+		82B3F27E2A49C250009F0CC9 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82B3F27D2A49C250009F0CC9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 82B3F25B2A49B92B009F0CC9 /* Project object */;
 }
