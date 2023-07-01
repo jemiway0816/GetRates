@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		821A44402A4FEC5B00203C57 /* ScrollableMenuBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A443F2A4FEC5B00203C57 /* ScrollableMenuBarViewController.swift */; };
+		821A44422A4FF7D800203C57 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A44412A4FF7D800203C57 /* MainViewController.swift */; };
+		821A44462A5031C100203C57 /* ScrollableMenuBar2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A44452A5031C100203C57 /* ScrollableMenuBar2ViewController.swift */; };
+		821A44482A5045CD00203C57 /* rateTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 821A44472A5045CD00203C57 /* rateTableViewCell.swift */; };
 		82B3F2672A49B92B009F0CC9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3F2662A49B92B009F0CC9 /* AppDelegate.swift */; };
 		82B3F2692A49B92B009F0CC9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3F2682A49B92B009F0CC9 /* SceneDelegate.swift */; };
-		82B3F26B2A49B92B009F0CC9 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B3F26A2A49B92B009F0CC9 /* ViewController.swift */; };
 		82B3F26E2A49B92B009F0CC9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B3F26C2A49B92B009F0CC9 /* Main.storyboard */; };
 		82B3F2702A49B92C009F0CC9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82B3F26F2A49B92C009F0CC9 /* Assets.xcassets */; };
 		82B3F2732A49B92C009F0CC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B3F2712A49B92C009F0CC9 /* LaunchScreen.storyboard */; };
@@ -18,10 +21,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		821A443F2A4FEC5B00203C57 /* ScrollableMenuBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableMenuBarViewController.swift; sourceTree = "<group>"; };
+		821A44412A4FF7D800203C57 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		821A44452A5031C100203C57 /* ScrollableMenuBar2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableMenuBar2ViewController.swift; sourceTree = "<group>"; };
+		821A44472A5045CD00203C57 /* rateTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = rateTableViewCell.swift; sourceTree = "<group>"; };
 		82B3F2632A49B92B009F0CC9 /* GetRates.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GetRates.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82B3F2662A49B92B009F0CC9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		82B3F2682A49B92B009F0CC9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		82B3F26A2A49B92B009F0CC9 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		82B3F26D2A49B92B009F0CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		82B3F26F2A49B92C009F0CC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82B3F2722A49B92C009F0CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -62,7 +68,10 @@
 			children = (
 				82B3F2662A49B92B009F0CC9 /* AppDelegate.swift */,
 				82B3F2682A49B92B009F0CC9 /* SceneDelegate.swift */,
-				82B3F26A2A49B92B009F0CC9 /* ViewController.swift */,
+				821A44412A4FF7D800203C57 /* MainViewController.swift */,
+				821A443F2A4FEC5B00203C57 /* ScrollableMenuBarViewController.swift */,
+				821A44452A5031C100203C57 /* ScrollableMenuBar2ViewController.swift */,
+				821A44472A5045CD00203C57 /* rateTableViewCell.swift */,
 				82B3F26C2A49B92B009F0CC9 /* Main.storyboard */,
 				82B3F26F2A49B92C009F0CC9 /* Assets.xcassets */,
 				82B3F2712A49B92C009F0CC9 /* LaunchScreen.storyboard */,
@@ -150,9 +159,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				82B3F26B2A49B92B009F0CC9 /* ViewController.swift in Sources */,
+				821A44402A4FEC5B00203C57 /* ScrollableMenuBarViewController.swift in Sources */,
+				821A44462A5031C100203C57 /* ScrollableMenuBar2ViewController.swift in Sources */,
 				82B3F2672A49B92B009F0CC9 /* AppDelegate.swift in Sources */,
+				821A44482A5045CD00203C57 /* rateTableViewCell.swift in Sources */,
 				82B3F2692A49B92B009F0CC9 /* SceneDelegate.swift in Sources */,
+				821A44422A4FF7D800203C57 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
