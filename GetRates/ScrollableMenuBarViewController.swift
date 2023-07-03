@@ -12,25 +12,28 @@ class ScrollableMenuBarViewController: UIViewController {
     let scrollView = UIScrollView()
     let stackView = UIStackView()
    
-    var menuItems = MyData.shared.menuItem
+    var menuItems = ["台灣銀行","泰國銀行","美國銀行"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsHorizontalScrollIndicator = false
+//        scrollView.backgroundColor = UIColor.brown
         view.addSubview(scrollView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
         stackView.spacing = 8
+//        stackView.backgroundColor = UIColor.cyan
         scrollView.addSubview(stackView)
+        
         
         for (index, item) in menuItems.enumerated() {
             let menuItemLabel = UILabel()
             menuItemLabel.clipsToBounds = true
-            menuItemLabel.layer.cornerRadius = 20
-            menuItemLabel.text = "   " + item + "   "
+            menuItemLabel.layer.cornerRadius = 5
+            menuItemLabel.text = "  "+item+"  "
             menuItemLabel.backgroundColor = UIColor.lightGray
             menuItemLabel.font = UIFont.systemFont(ofSize: 18)
             menuItemLabel.textColor = UIColor.black
@@ -44,7 +47,10 @@ class ScrollableMenuBarViewController: UIViewController {
             menuItemLabel.tag = index
         }
         
+        print(menuItems.last!)
+        
         NSLayoutConstraint.activate([
+            
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),

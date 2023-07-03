@@ -21,6 +21,12 @@ class MyData {
     static let shared = MyData()
     var menuItem:[String] = []
     
+    var menuBarValue = 0 {
+        didSet {
+            // update menuBar Item
+            
+        }
+    }
     private init() { }
 }
 
@@ -29,10 +35,10 @@ var rates = [data_struct]()
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    @IBOutlet weak var buyRate: UILabel!
-    @IBOutlet weak var sellRate: UILabel!
-    @IBOutlet weak var buyRateThailandTW: UILabel!
-    @IBOutlet weak var buyRateThailandUS: UILabel!
+//    @IBOutlet weak var buyRate: UILabel!
+//    @IBOutlet weak var sellRate: UILabel!
+//    @IBOutlet weak var buyRateThailandTW: UILabel!
+//    @IBOutlet weak var buyRateThailandUS: UILabel!
    
     @IBOutlet weak var ratesTableView: UITableView!
     
@@ -115,11 +121,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             for rate in doc.xpath("//*[@id=\"ie11andabove\"]/div/table/tbody/tr[1]/td[2]") {
                 print ("台灣銀行 美金現金買入", rate.text!)
-                buyRate.text = "台灣銀行 美金現金買入:\(rate.text!)    "
+//                buyRate.text = "台灣銀行 美金現金買入:\(rate.text!)    "
             }
             for rate in doc.xpath("//*[@id=\"ie11andabove\"]/div/table/tbody/tr[1]/td[3]") {
                 print ("台灣銀行 美金現金賣出", rate.text!)
-                sellRate.text = "台灣銀行 美金現金賣出:\(rate.text!)    "
+//                sellRate.text = "台灣銀行 美金現金賣出:\(rate.text!)    "
             }
         }
     }
@@ -216,10 +222,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     print ("泰國銀行 泰幣對美金買入\(buyingUSDHead)")
                     print ("泰國銀行 泰幣對台幣買入\(buyingTWDHead)")
                     
-                    DispatchQueue.main.async {
-                        self.buyRateThailandUS.text = "泰國銀行 泰幣對美金買入:" + String(buyingUSDHead)
-                        self.buyRateThailandTW.text = "泰國銀行 泰幣對台幣買入:" + String(buyingTWDHead)
-                    }
+//                    DispatchQueue.main.async {
+//                        self.buyRateThailandUS.text = "泰國銀行 泰幣對美金買入:" + String(buyingUSDHead)
+//                        self.buyRateThailandTW.text = "泰國銀行 泰幣對台幣買入:" + String(buyingTWDHead)
+//                    }
                     
                 } catch  {
                     

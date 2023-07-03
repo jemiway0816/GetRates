@@ -29,7 +29,7 @@ class ScrollableMenuBar2ViewController: UIViewController {
         for (index, item) in menuItems.enumerated() {
             let menuItemLabel = UILabel()
             menuItemLabel.clipsToBounds = true
-            menuItemLabel.layer.cornerRadius = 20
+            menuItemLabel.layer.cornerRadius = 5
             menuItemLabel.text = "   " + item + "   "
             menuItemLabel.backgroundColor = UIColor.lightGray
             menuItemLabel.font = UIFont.systemFont(ofSize: 18)
