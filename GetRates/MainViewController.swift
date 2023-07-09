@@ -39,6 +39,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         ratesTableView.delegate = self
         ratesTableView.dataSource = self
         
+        
         // 爬蟲台灣銀行網站
         scrapeTaianBank()
         
