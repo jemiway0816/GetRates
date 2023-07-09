@@ -8,6 +8,7 @@
 import UIKit
 import Kanna
 import SwiftyJSON
+import Kingfisher
 
 struct data_struct {
     var type:String = ""
@@ -15,6 +16,13 @@ struct data_struct {
     var cashSell:String = ""
     var ticketBuy:String = ""
     var ticketSell:String = ""
+}
+
+struct Meme: Codable
+{
+    let id: Int
+    let image: URL
+    let caption: String
 }
 
 // 使用 MyData 將幣別資訊傳給 MenuBar2
@@ -25,6 +33,7 @@ class MyData {
     private init() { }
 }
 
+var images = [UIImage]()
 var getRates = data_struct()
 var rates = [data_struct]()
 
@@ -32,6 +41,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
       
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var ratesTableView: UITableView!
+    
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +55,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         // 爬蟲泰國銀行網站
         parseThailandBankHTML()
+        
+//        imageView.image = UIImage(named: "IMG_7685")
+        getImageUrl()
     }
     
     // tableView 設定
@@ -63,6 +77,73 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.ticketSellLabel.text = rate.ticketSell
         
         return cell
+    }
+    
+    
+    func getimage(urlStr:URL) {
+        
+        print("urlStr = \(urlStr)")
+        let request = URLRequest(url: urlStr)
+        URLSession.shared.dataTask(with: request)
+        {
+            data, response, error in
+            if let data,
+               let image = UIImage(data: data)
+            {
+                DispatchQueue.main.async
+                {
+                    print("image append")
+                    images.append(image)
+                    
+                    self.imageView.image = images[0]
+                }
+            } else {
+                print("data error")
+            }
+        }.resume()
+    }
+    
+    func getImageUrl() {
+        
+        let urlString = "https://some-random-api.ml/meme"
+        if let url = URL(string: urlString)
+        {
+            URLSession.shared.dataTask(with: url)
+            {
+                data, response, error
+                in
+                if let data = data
+                {
+                    let decoder = JSONDecoder()
+                    do
+                    {
+                        let meme = try decoder.decode(Meme.self, from: data)
+                        print(meme.caption)
+                        
+                        DispatchQueue.main.async {
+                            
+                            print("got image")
+                            
+//                            self.imageView.kf.setImage(with: meme.image)
+                            
+//                            self.getimage(urlStr: meme.image)
+                            
+                            if let url = URL(string: "https://www.ghibli.jp/gallery/kazetachinu001.jpg") {
+                                self.getimage(urlStr: url)
+                            }
+                            
+                            
+                            // 直接顯示網路上的圖片，不用先抓下來
+//                            self.imageView.kf.setImage(with: meme.image)
+                        }
+                    }
+                    catch
+                    {
+                        print("error ... ")
+                    }
+                }
+            }.resume()
+        }
     }
     
     // 將 MenuBar1 和 MenuBar2 加入 MainViewController
@@ -92,6 +173,20 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             scrollableMenuBar2ViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollableMenuBar2ViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollableMenuBar2ViewController.view.heightAnchor.constraint(equalToConstant: 36)
+        ])
+    
+        // menuBar3
+        let scrollableMenuBar3ViewController = ScrollableMenuBar3ViewController()
+        scrollableMenuBar3ViewController.MainVC = self
+        addChild(scrollableMenuBar3ViewController)
+        view.addSubview(scrollableMenuBar3ViewController.view)
+        scrollableMenuBar3ViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+//            scrollableMenuBar2ViewController.view.topAnchor.constraint(equalTo: scrollableMenuBarViewController.view.bottomAnchor, constant: 10.0),
+            scrollableMenuBar3ViewController.view.topAnchor.constraint(equalTo: ratesTableView.bottomAnchor, constant: 10.0),
+            scrollableMenuBar3ViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            scrollableMenuBar3ViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            scrollableMenuBar3ViewController.view.heightAnchor.constraint(equalToConstant: 36)
         ])
         
     }

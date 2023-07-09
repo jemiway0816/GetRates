@@ -18,6 +18,8 @@
 		82B3F2732A49B92C009F0CC9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 82B3F2712A49B92C009F0CC9 /* LaunchScreen.storyboard */; };
 		82B3F27C2A49BA52009F0CC9 /* Kanna in Frameworks */ = {isa = PBXBuildFile; productRef = 82B3F27B2A49BA52009F0CC9 /* Kanna */; };
 		82B3F27F2A49C250009F0CC9 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 82B3F27E2A49C250009F0CC9 /* SwiftyJSON */; };
+		82B8EEC22A5AEA4100757339 /* ScrollableMenuBar3ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82B8EEC12A5AEA4100757339 /* ScrollableMenuBar3ViewController.swift */; };
+		82B8EEC52A5AF1F700757339 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 82B8EEC42A5AF1F700757339 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,7 @@
 		82B3F26F2A49B92C009F0CC9 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82B3F2722A49B92C009F0CC9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		82B3F2742A49B92C009F0CC9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82B8EEC12A5AEA4100757339 /* ScrollableMenuBar3ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollableMenuBar3ViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82B8EEC52A5AF1F700757339 /* Kingfisher in Frameworks */,
 				82B3F27F2A49C250009F0CC9 /* SwiftyJSON in Frameworks */,
 				82B3F27C2A49BA52009F0CC9 /* Kanna in Frameworks */,
 			);
@@ -71,6 +75,7 @@
 				821A44412A4FF7D800203C57 /* MainViewController.swift */,
 				821A443F2A4FEC5B00203C57 /* ScrollableMenuBarViewController.swift */,
 				821A44452A5031C100203C57 /* ScrollableMenuBar2ViewController.swift */,
+				82B8EEC12A5AEA4100757339 /* ScrollableMenuBar3ViewController.swift */,
 				821A44472A5045CD00203C57 /* rateTableViewCell.swift */,
 				82B3F26C2A49B92B009F0CC9 /* Main.storyboard */,
 				82B3F26F2A49B92C009F0CC9 /* Assets.xcassets */,
@@ -99,6 +104,7 @@
 			packageProductDependencies = (
 				82B3F27B2A49BA52009F0CC9 /* Kanna */,
 				82B3F27E2A49C250009F0CC9 /* SwiftyJSON */,
+				82B8EEC42A5AF1F700757339 /* Kingfisher */,
 			);
 			productName = GetRates;
 			productReference = 82B3F2632A49B92B009F0CC9 /* GetRates.app */;
@@ -131,6 +137,7 @@
 			packageReferences = (
 				82B3F27A2A49BA52009F0CC9 /* XCRemoteSwiftPackageReference "Kanna" */,
 				82B3F27D2A49C250009F0CC9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
+				82B8EEC32A5AF1F700757339 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 			);
 			productRefGroup = 82B3F2642A49B92B009F0CC9 /* Products */;
 			projectDirPath = "";
@@ -160,6 +167,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				821A44402A4FEC5B00203C57 /* ScrollableMenuBarViewController.swift in Sources */,
+				82B8EEC22A5AEA4100757339 /* ScrollableMenuBar3ViewController.swift in Sources */,
 				821A44462A5031C100203C57 /* ScrollableMenuBar2ViewController.swift in Sources */,
 				82B3F2672A49B92B009F0CC9 /* AppDelegate.swift in Sources */,
 				821A44482A5045CD00203C57 /* rateTableViewCell.swift in Sources */,
@@ -400,6 +408,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		82B8EEC32A5AF1F700757339 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -412,6 +428,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 82B3F27D2A49C250009F0CC9 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
 			productName = SwiftyJSON;
+		};
+		82B8EEC42A5AF1F700757339 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 82B8EEC32A5AF1F700757339 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
