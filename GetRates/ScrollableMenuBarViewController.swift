@@ -12,7 +12,9 @@ class ScrollableMenuBarViewController: UIViewController {
     let scrollView = UIScrollView()
     let stackView = UIStackView()
    
-    var menuItems = ["台灣銀行","泰國銀行","美國銀行"]
+    var MainVC:MainViewController!
+    
+    var menuItems = ["台灣銀行","玉山銀行","台北富邦","中國商銀","國泰世華"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +29,6 @@ class ScrollableMenuBarViewController: UIViewController {
         stackView.spacing = 8
 //        stackView.backgroundColor = UIColor.cyan
         scrollView.addSubview(stackView)
-        
         
         for (index, item) in menuItems.enumerated() {
             let menuItemLabel = UILabel()
@@ -47,10 +48,7 @@ class ScrollableMenuBarViewController: UIViewController {
             menuItemLabel.tag = index
         }
         
-        print(menuItems.last!)
-        
         NSLayoutConstraint.activate([
-            
             scrollView.topAnchor.constraint(equalTo: view.topAnchor),
             scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -68,6 +66,8 @@ class ScrollableMenuBarViewController: UIViewController {
         guard let index = recognizer.view?.tag else { return }
         let selectedItem = index
         print("用戶選擇了 MenuBar 1 的 \(menuItems[selectedItem])")
+        
+        MainVC.messageLabel.text = "用戶選擇了 MenuBar1 的 \(menuItems[selectedItem])"
     }
 
 }

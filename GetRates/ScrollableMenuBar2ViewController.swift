@@ -12,6 +12,9 @@ class ScrollableMenuBar2ViewController: UIViewController {
     let scrollView = UIScrollView()
     let stackView = UIStackView()
    
+    var MainVC:MainViewController!
+    
+    // 取得幣別資訊
     var menuItems = MyData.shared.menuItem
     
     override func viewDidLoad() {
@@ -26,6 +29,7 @@ class ScrollableMenuBar2ViewController: UIViewController {
         stackView.spacing = 8
         scrollView.addSubview(stackView)
         
+        // 每個幣別產生 Label
         for (index, item) in menuItems.enumerated() {
             let menuItemLabel = UILabel()
             menuItemLabel.clipsToBounds = true
@@ -62,6 +66,9 @@ class ScrollableMenuBar2ViewController: UIViewController {
         guard let index = recognizer.view?.tag else { return }
         let selectedItem = index
         print("用戶選擇了 MenuBar 2 的 \(menuItems[selectedItem])")
+        
+        MainVC.messageLabel.text = "用戶選擇了 MenuBar2 的 \(menuItems[selectedItem])"
+        
     }
 
 }

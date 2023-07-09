@@ -17,16 +17,11 @@ struct data_struct {
     var ticketSell:String = ""
 }
 
+// 使用 MyData 將幣別資訊傳給 MenuBar2
 class MyData {
     static let shared = MyData()
     var menuItem:[String] = []
     
-    var menuBarValue = 0 {
-        didSet {
-            // update menuBar Item
-            
-        }
-    }
     private init() { }
 }
 
@@ -34,31 +29,30 @@ var getRates = data_struct()
 var rates = [data_struct]()
 
 class MainViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-//    @IBOutlet weak var buyRate: UILabel!
-//    @IBOutlet weak var sellRate: UILabel!
-//    @IBOutlet weak var buyRateThailandTW: UILabel!
-//    @IBOutlet weak var buyRateThailandUS: UILabel!
-   
+      
+    @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var ratesTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        scrapeTaianBank()
-        parseThailandBankHTML()
-
         ratesTableView.delegate = self
         ratesTableView.dataSource = self
         
+        // 爬蟲台灣銀行網站
+        scrapeTaianBank()
+        
+        // 爬蟲泰國銀行網站
+        parseThailandBankHTML()
     }
     
+    // tableView 設定
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return MyData.shared.menuItem.count
+//        return MyData.shared.menuItem.count
+        return rates.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = ratesTableView.dequeueReusableCell(withIdentifier: "rateID", for: indexPath)
         let cell = ratesTableView.dequeueReusableCell(withIdentifier: "\(rateTableViewCell.self)", for: indexPath) as! rateTableViewCell
         let rate = rates[indexPath.row]
         
@@ -71,10 +65,12 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         return cell
     }
     
+    // 將 MenuBar1 和 MenuBar2 加入 MainViewController
     func setupMenuBar() {
         
-        // menuBar 1
+        // menuBar1
         let scrollableMenuBarViewController = ScrollableMenuBarViewController()
+        scrollableMenuBarViewController.MainVC = self
         addChild(scrollableMenuBarViewController)
         view.addSubview(scrollableMenuBarViewController.view)
         scrollableMenuBarViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -85,8 +81,9 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             scrollableMenuBarViewController.view.heightAnchor.constraint(equalToConstant: 36)
         ])
         
-        // menuBar 2
+        // menuBar2
         let scrollableMenuBar2ViewController = ScrollableMenuBar2ViewController()
+        scrollableMenuBar2ViewController.MainVC = self
         addChild(scrollableMenuBar2ViewController)
         view.addSubview(scrollableMenuBar2ViewController.view)
         scrollableMenuBar2ViewController.view.translatesAutoresizingMaskIntoConstraints = false
@@ -99,6 +96,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         
     }
     
+    // 爬蟲台灣銀行網站
     func scrapeTaianBank() -> Void {
         
         let url = URL(string: "https://rate.bot.com.tw/xrt?Lang=zh-TW")!
@@ -108,13 +106,17 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             if let data {
                 let html = String(data: data, encoding: .utf8)!
                 DispatchQueue.main.async {
-                    self.parseTaiwanBankHTML(html: html)
+//                    self.parseTaiwanBankHTML(html: html)
                     self.parseTaiwanBankHTMLAll(html: html)
+                    
+                    // MenuBar2的資料來源是台灣銀行的幣別，所以要爬完所有匯率資訊才能設定MenuBar
+                    self.setupMenuBar()
                 }
             }
         }.resume()
     }
     
+    // 從台灣銀行取得台幣對美金現金買賣匯率
     func parseTaiwanBankHTML(html: String) {
         
         if let doc = try? Kanna.HTML(html: html, encoding: String.Encoding.utf8) {
@@ -130,6 +132,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
+    // 從台灣銀行取得所有匯率資訊
     func parseTaiwanBankHTMLAll(html:String) {
         
         var gg:String = ""
@@ -141,6 +144,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     for rate in doc.xpath("//*[@id=\"ie11andabove\"]/div/table/tbody/tr[\(i)]/td[\(j)]") {
                         
                         if j==1 {
+                            
+                            // 整理資料，取出中文幣別
                             gg = rate.text! as String
                             gg = gg.replacingOccurrences(of: " ", with: "")
                             gg = gg.replacingOccurrences(of: "\r\n", with: "")
@@ -157,6 +162,8 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                             let offsetRange = gg.startIndex ..< offsetIndex
                             
                             getRates.type = String(gg[offsetRange])
+                            
+                            // 紀錄幣別資訊在 MyData
                             MyData.shared.menuItem.append(getRates.type)
                         }
                         
@@ -181,10 +188,10 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                 rates.append(getRates)
             }
         }
-        setupMenuBar()
         ratesTableView.reloadData()
     }
     
+    // 從泰國銀行網站爬蟲匯率資料
     func parseThailandBankHTML() {
         
         let headers = [
@@ -221,12 +228,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     print ("泰國銀行 泰幣對美金買入\(buyingUSDHead)")
                     print ("泰國銀行 泰幣對台幣買入\(buyingTWDHead)")
-                    
-//                    DispatchQueue.main.async {
-//                        self.buyRateThailandUS.text = "泰國銀行 泰幣對美金買入:" + String(buyingUSDHead)
-//                        self.buyRateThailandTW.text = "泰國銀行 泰幣對台幣買入:" + String(buyingTWDHead)
-//                    }
-                    
+                                       
                 } catch  {
                     
                 }

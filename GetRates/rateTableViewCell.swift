@@ -15,7 +15,6 @@ class rateTableViewCell: UITableViewCell {
     @IBOutlet weak var ticketBuyLabel: UILabel!
     @IBOutlet weak var ticketSellLabel: UILabel!
     
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
