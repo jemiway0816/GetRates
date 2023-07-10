@@ -13,10 +13,6 @@ class ScrollableMenuBar3ViewController: UIViewController {
     let stackView = UIStackView()
    
     var MainVC:MainViewController!
-    
-    // 取得幣別資訊
-    var menuItems = MyData.shared.menuItem
-    
     var scrollImages:[UIImage]!
     
     override func viewDidLoad() {
@@ -29,7 +25,7 @@ class ScrollableMenuBar3ViewController: UIViewController {
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .horizontal
-        stackView.spacing = 8
+        stackView.spacing = 0
         scrollView.addSubview(stackView)
         
         scrollImages = images
@@ -37,11 +33,11 @@ class ScrollableMenuBar3ViewController: UIViewController {
         for (index, item) in scrollImages.enumerated() {
             
             let imageView = UIImageView(image: item)
-
+            
             imageView.translatesAutoresizingMaskIntoConstraints = false
             imageView.clipsToBounds = true
             imageView.layer.cornerRadius = 5
-            imageView.contentMode = .scaleAspectFill
+            imageView.contentMode = .scaleAspectFit
             
             imageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
 //            imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
