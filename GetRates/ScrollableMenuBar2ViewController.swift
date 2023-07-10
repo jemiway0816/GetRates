@@ -65,9 +65,9 @@ class ScrollableMenuBar2ViewController: UIViewController {
     @objc func menuItemTapped(_ recognizer: UITapGestureRecognizer) {
         guard let index = recognizer.view?.tag else { return }
         let selectedItem = index
-        print("用戶選擇了 MenuBar 2 的 \(menuItems[selectedItem])")
+        print("使用者選擇了 MenuBar 2 的 \(menuItems[selectedItem])")
         
-        MainVC.messageLabel.text = "用戶選擇了 MenuBar2 的 \(menuItems[selectedItem])"
+        MainVC.messageLabel.text = "使用者選擇了 MenuBar2 的 \(menuItems[selectedItem])"
         
     }
 

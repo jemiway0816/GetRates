@@ -17,11 +17,14 @@ class ScrollableMenuBar3ViewController: UIViewController {
     // 取得幣別資訊
     var menuItems = MyData.shared.menuItem
     
+    var scrollImages:[UIImage]!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.showsHorizontalScrollIndicator = false
+        scrollView.bounces = false
         view.addSubview(scrollView)
 
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -29,23 +32,26 @@ class ScrollableMenuBar3ViewController: UIViewController {
         stackView.spacing = 8
         scrollView.addSubview(stackView)
         
-        // 每個幣別產生 Label
-        for (index, item) in menuItems.enumerated() {
-            let menuItemLabel = UILabel()
-            menuItemLabel.clipsToBounds = true
-            menuItemLabel.layer.cornerRadius = 5
-            menuItemLabel.text = "   " + item + "   "
-            menuItemLabel.backgroundColor = UIColor.lightGray
-            menuItemLabel.font = UIFont.systemFont(ofSize: 18)
-            menuItemLabel.textColor = UIColor.black
-            menuItemLabel.translatesAutoresizingMaskIntoConstraints = false
-            stackView.addArrangedSubview(menuItemLabel)
+        scrollImages = images
+        
+        for (index, item) in scrollImages.enumerated() {
+            
+            let imageView = UIImageView(image: item)
+
+            imageView.translatesAutoresizingMaskIntoConstraints = false
+            imageView.clipsToBounds = true
+            imageView.layer.cornerRadius = 5
+            imageView.contentMode = .scaleAspectFill
+            
+            imageView.widthAnchor.constraint(equalToConstant: 200).isActive = true
+//            imageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+            
+            stackView.addArrangedSubview(imageView)
             
             let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(menuItemTapped(_:)))
-            menuItemLabel.isUserInteractionEnabled = true
-            menuItemLabel.addGestureRecognizer(tapGestureRecognizer)
-            
-            menuItemLabel.tag = index
+            imageView.isUserInteractionEnabled = true
+            imageView.addGestureRecognizer(tapGestureRecognizer)
+            imageView.tag = index
         }
         
         NSLayoutConstraint.activate([
@@ -65,9 +71,9 @@ class ScrollableMenuBar3ViewController: UIViewController {
     @objc func menuItemTapped(_ recognizer: UITapGestureRecognizer) {
         guard let index = recognizer.view?.tag else { return }
         let selectedItem = index
-        print("用戶選擇了 MenuBar 3 的 \(menuItems[selectedItem])")
+        print("使用者選擇了 MenuBar 3 的第 \(selectedItem+1) 張圖")
         
-        MainVC.messageLabel.text = "用戶選擇了 MenuBar3 的 \(menuItems[selectedItem])"
+        MainVC.messageLabel.text = "使用者選擇了 MenuBar 3 的第 \(selectedItem+1) 張圖"
         
     }
 

@@ -42,8 +42,6 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageLabel: UILabel!
     @IBOutlet weak var ratesTableView: UITableView!
     
-    @IBOutlet weak var imageView: UIImageView!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,8 +54,11 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         // 爬蟲泰國銀行網站
         parseThailandBankHTML()
         
-//        imageView.image = UIImage(named: "IMG_7685")
-        getImageUrl()
+        for i in 1...9 {
+            getimage(i: i)
+        }
+        
+//        getImageUrl()
     }
     
     // tableView 設定
@@ -80,27 +81,36 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     
-    func getimage(urlStr:URL) {
+    func getimage(i:Int) {
         
-        print("urlStr = \(urlStr)")
-        let request = URLRequest(url: urlStr)
-        URLSession.shared.dataTask(with: request)
-        {
-            data, response, error in
-            if let data,
-               let image = UIImage(data: data)
+//        print("urlStr = \(urlStr)")
+        let urlStr = "https://www.ghibli.jp/gallery/kazetachinu00\(i).jpg"
+        
+        if let url = URL(string: urlStr) {
+            
+            let request = URLRequest(url: url)
+            URLSession.shared.dataTask(with: request)
             {
-                DispatchQueue.main.async
+                data, response, error in
+                if let data,
+                   let image = UIImage(data: data)
                 {
-                    print("image append")
-                    images.append(image)
-                    
-                    self.imageView.image = images[0]
+                    DispatchQueue.main.async
+                    {
+                        print("image append \(images.count)")
+                        images.append(image)
+                        
+                        if images.count > 7 {
+                            self.setupMenuBar3()
+                        }
+                    }
+                } else {
+                    print("data error")
                 }
-            } else {
-                print("data error")
-            }
-        }.resume()
+            }.resume()
+        } else {
+            print("url error")
+        }
     }
     
     func getImageUrl() {
@@ -128,9 +138,13 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
                             
 //                            self.getimage(urlStr: meme.image)
                             
-                            if let url = URL(string: "https://www.ghibli.jp/gallery/kazetachinu001.jpg") {
-                                self.getimage(urlStr: url)
-                            }
+//                            if let url = URL(string: "https://www.ghibli.jp/gallery/kazetachinu001.jpg") {
+//                                self.getimage(urlStr: url)
+//                            }
+                            
+//                            if let url = URL(string: "https://api.vvhan.com/api/view") {
+//                                self.getimage(urlStr: url)
+//                            }
                             
                             
                             // 直接顯示網路上的圖片，不用先抓下來
@@ -174,23 +188,24 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
             scrollableMenuBar2ViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             scrollableMenuBar2ViewController.view.heightAnchor.constraint(equalToConstant: 36)
         ])
+    }
     
+    func setupMenuBar3() {
+        
         // menuBar3
         let scrollableMenuBar3ViewController = ScrollableMenuBar3ViewController()
         scrollableMenuBar3ViewController.MainVC = self
         addChild(scrollableMenuBar3ViewController)
         view.addSubview(scrollableMenuBar3ViewController.view)
         scrollableMenuBar3ViewController.view.translatesAutoresizingMaskIntoConstraints = false
+        
         NSLayoutConstraint.activate([
-//            scrollableMenuBar2ViewController.view.topAnchor.constraint(equalTo: scrollableMenuBarViewController.view.bottomAnchor, constant: 10.0),
             scrollableMenuBar3ViewController.view.topAnchor.constraint(equalTo: ratesTableView.bottomAnchor, constant: 10.0),
             scrollableMenuBar3ViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollableMenuBar3ViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollableMenuBar3ViewController.view.heightAnchor.constraint(equalToConstant: 36)
+            scrollableMenuBar3ViewController.view.heightAnchor.constraint(equalToConstant: 150)
         ])
-        
     }
-    
     // 爬蟲台灣銀行網站
     func scrapeTaianBank() -> Void {
         
