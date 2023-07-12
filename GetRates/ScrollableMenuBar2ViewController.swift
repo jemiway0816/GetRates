@@ -17,6 +17,11 @@ class ScrollableMenuBar2ViewController: UIViewController {
     // 取得幣別資訊
     var menuItems = MyData.shared.menuItem
     
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
