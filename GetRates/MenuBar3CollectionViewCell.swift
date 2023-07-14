@@ -25,15 +25,18 @@ class MenuBar3CollectionViewCell: UICollectionViewCell {
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
         
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        contentView.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
+        imageView.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
         contentView.addSubview(imageView)
         
-        NSLayoutConstraint.activate([
-            
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ])
+//        NSLayoutConstraint.activate([
+//
+//            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+//            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+//            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+//        ])
     }
 
 
