@@ -24,9 +24,11 @@ class MenuBar3CollectionViewCell: UICollectionViewCell {
     private func configureImageView() {
         imageView.contentMode = .scaleAspectFit
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        
         contentView.addSubview(imageView)
         
         NSLayoutConstraint.activate([
+            
             imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             imageView.topAnchor.constraint(equalTo: contentView.topAnchor),

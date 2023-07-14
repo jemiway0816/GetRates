@@ -21,7 +21,7 @@ class ScrollableMenuBar3ViewController: UIViewController, UICollectionViewDataSo
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 500, height: 200), collectionViewLayout: collectionViewLayout)
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 200, height: 500), collectionViewLayout: collectionViewLayout)
         collectionView.register(MenuBar3CollectionViewCell.self, forCellWithReuseIdentifier: "\(MenuBar3CollectionViewCell.self)")
         collectionView.dataSource = self // 設置數據源
         

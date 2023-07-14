@@ -205,7 +205,7 @@ class MainViewController: UIViewController {
             scrollableMenuBar3ViewController.view.topAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 10.0),
             scrollableMenuBar3ViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             scrollableMenuBar3ViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            scrollableMenuBar3ViewController.view.heightAnchor.constraint(equalToConstant: 350)
+            scrollableMenuBar3ViewController.view.heightAnchor.constraint(equalToConstant: 250)
         ])
     }
     
