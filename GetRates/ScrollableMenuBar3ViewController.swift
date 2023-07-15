@@ -14,19 +14,22 @@ class ScrollableMenuBar3ViewController: UIViewController, UICollectionViewDataSo
     
     var images = [UIImage]()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         let collectionViewLayout = UICollectionViewFlowLayout()
         collectionViewLayout.scrollDirection = .horizontal
         
-        let collectionView = UICollectionView(frame: CGRect(x: 10, y: 0, width: 380, height: 100), collectionViewLayout: collectionViewLayout)
+        let width = UIScreen.main.bounds.width
+        collectionViewLayout.itemSize = CGSize(width: width, height: width)
+
+        let collectionView = UICollectionView(frame: CGRect(x: 10, y: 0, width: 380, height: 300), collectionViewLayout: collectionViewLayout)
         collectionView.register(MenuBar3CollectionViewCell.self, forCellWithReuseIdentifier: "\(MenuBar3CollectionViewCell.self)")
         collectionView.dataSource = self // 設置數據源
         
-        view.addSubview(collectionView)
+        collectionView.showsHorizontalScrollIndicator = false
         
+        view.addSubview(collectionView)
                
     }
 
@@ -40,5 +43,5 @@ class ScrollableMenuBar3ViewController: UIViewController, UICollectionViewDataSo
         cell.imageView.image = img
         return cell
     }
-
+        
 }

@@ -22,12 +22,12 @@ class MenuBar3CollectionViewCell: UICollectionViewCell {
     }
 
     private func configureImageView() {
-        imageView.contentMode = .scaleAspectFit
+        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+//        contentView.translatesAutoresizingMaskIntoConstraints = false
         
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        contentView.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
-        imageView.frame = CGRect(x: 0, y: 0, width: 150, height: 100)
+//        contentView.frame = CGRect(x: 0, y: 0, width: 100, height: 100)
+        imageView.frame = CGRect(x: 0, y: 0, width: 380, height: 220)
         contentView.addSubview(imageView)
         
 //        NSLayoutConstraint.activate([
