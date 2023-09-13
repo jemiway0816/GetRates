@@ -64,6 +64,7 @@ class MainViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.ticketSellLabel.text = rate.ticketSell
         
         return cell
+        
     }
     
     // 將 MenuBar1 和 MenuBar2 加入 MainViewController
